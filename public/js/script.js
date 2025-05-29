@@ -8,6 +8,29 @@ function ouvrirNouvelleAffaire() {
   window.location.href = 'nouvelle-affaire.html';
 }
 
+async function chargerChantiers2() {
+  console.log('hello');
+  const res = await fetch('/api/chantiers');
+  const chantiers = await res.json();
+
+      console.log('chantiers recus :', chantiers);
+      const tbody = document.querySelector('#chantiersTable tbody');
+      tbody.innerHTML = '';
+      chantiers.forEach(c => {
+        console.log('chantiers recus :', c);
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${c.id}</td>
+          <td>${c.nom}</td>
+          <td>${c.affaire_nom || ''}</td>
+          <td>${c.date_reception || '-'}</td>
+          <td>${c.date_prelevement || '-'}</td>
+        `;
+        tbody.appendChild(row);
+      });
+  
+}
+
 async function chargerAffaires() {
   const res = await fetch(`api/affaires`);
   const affaires = await res.json();
@@ -160,7 +183,7 @@ function loadCalendarEvents() {
   fetch('/api/chantiers')
     .then(res => res.json())
     .then(chantiers => {
-      console.log('chantiers recus :', chantiers);
+      
       chantiers.forEach(c => {
        
             if (c.date_reception) {
@@ -172,14 +195,13 @@ function loadCalendarEvents() {
         fetch(`/api/eprouvettes?chantier_id=${c.id}`)
         .then(res => res.json())
         .then(eprouvettes => {
-          console.log('Éprouvettes reçues :', eprouvettes);
+          
           
             eprouvettes.forEach(e => {
             
             
             if (c.date_prelevement) {
-              console.log('hello')
-              console.log(e)
+           
               const date = new Date(c.date_prelevement);
               date.setDate(date.getDate() + e.age_jour);
               const isoDate = date.toISOString().split('T')[0];
@@ -244,12 +266,14 @@ chargerAffaires();
 chargerChantiers();
 loadCalendarEvents();
 loadChantiersInSelect();
+chargerChantiers2();
 
 window.onload = async () => {
   await chargerAffaires();
   await chargerChantiers();
   await loadCalendarEvents();
   await loadChantiersInSelect();
+  await chargerChantiers2();
 
 };
 
@@ -258,5 +282,6 @@ chargerAffaires();
 chargerChantiers();
 loadCalendarEvents();
 loadChantiersInSelect();
+chargerChantiers2();
 });
 

@@ -5,15 +5,9 @@ const cors = require('cors');
 const app = express();
 const db = new sqlite3.Database('./data.db');
 
-
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
-
-
-app.use(express.static(path.join(__dirname, 'public')));
-
 
 // Création des tables
 db.serialize(() => {
