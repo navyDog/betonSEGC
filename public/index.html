@@ -4,11 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gestion Affaires & Chantiers</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
 
 </head>
 <body>
+
+  <header class="header">
+    <h1>SEGC Mayotte</h1>
+  </header>
+
+    <main class="container">
+    <section class="actions">
+      <button onclick="ouvrirNouvelleAffaire()">Nouvelle Affaire</button>
+      <button onclick="ouvrirNouveauChantier()">Nouveau Chantier</button>
+    </section>
+
+      <div class="lists">
+      <div>
+        <h2>Liste des affaires</h2>
+        <ul id="listeAffaires"></ul>
+      </div>
+
+      <div>
+        <h2>Liste des chantiers</h2>
+        <ul id="listeChantiers"></ul>
+      </div>
+    </div>
+
+    <h2>Liste des chantiers</h2>
+    <table id="chantiersTable">
+      <thead>
+        <tr>
+          <th>Numéro</th>
+          <th>Nom</th>
+          <th>Affaire</th>
+          <th>Réception</th>
+          <th>Prélèvement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Données insérées par JS -->
+      </tbody>
+    </table>
+  </main>
+
   <div class="container">
     <h1>Gestion Affaires & Chantiers</h1>
 
@@ -65,7 +105,7 @@
 <div id="calendar"></div>
 
 
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
 </body>

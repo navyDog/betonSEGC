@@ -1,5 +1,13 @@
 const apiUrl = 'https://ton-projet.railway.app/api';
 
+function ouvrirNouveauChantier() {
+  window.location.href = 'nouveau-chantier.html';
+}
+
+function ouvrirNouvelleAffaire() {
+  window.location.href = 'nouvelle-affaire.html';
+}
+
 async function chargerAffaires() {
   const res = await fetch(`api/affaires`);
   const affaires = await res.json();
