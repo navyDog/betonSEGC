@@ -1,7 +1,7 @@
 const apiUrl = 'https://ton-projet.railway.app/api';
 
 async function chargerAffaires() {
-  const res = await fetch(`${apiUrl}/affaires`);
+  const res = await fetch(`api/affaires`);
   const affaires = await res.json();
 
   const select = document.getElementById('affaireSelect');
@@ -22,7 +22,7 @@ async function chargerAffaires() {
 }
 
 async function chargerChantiers() {
-  const res = await fetch(`${apiUrl}/chantiers`);
+  const res = await fetch(`api/chantiers`);
   const chantiers = await res.json();
 
   const ul = document.getElementById('listeChantiers');
@@ -44,7 +44,7 @@ async function chargerChantiers() {
 async function ajouterAffaire() {
   const nom = document.getElementById('nomAffaire').value;
   if (!nom) return;
-  await fetch(`${apiUrl}/affaires`, {
+  await fetch(`api/affaires`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ nom })
@@ -65,7 +65,7 @@ async function ajouterChantier() {
 
   if (!nom || !affaire_id) return;
 
-  await fetch(`${apiUrl}/chantiers`, {
+  await fetch(`api/chantiers`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ nom, affaire_id, date_reception, date_prelevement, slump })
