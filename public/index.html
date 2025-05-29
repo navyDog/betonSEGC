@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestion Affaires & Chantiers</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+
+</head>
+<body>
+  <div class="container">
+    <h1>Gestion Affaires & Chantiers</h1>
+
+    <div class="form-section">
+      <h2>Créer une affaire</h2>
+      <input type="text" id="nomAffaire" placeholder="Nom de l'affaire" />
+      <button onclick="ajouterAffaire()">Ajouter</button>
+    </div>
+
+    <div class="form-section">
+      <h2>Créer un chantier</h2>
+      <input type="text" id="nomChantier" placeholder="Nom du chantier" />
+      <select id="affaireSelect"></select>
+      <label for="datePrelevement">Prelevement :</label>
+           <input type="date" id="datePrelevement" />
+      <label for="dateReception">Reception :</label>
+      <input type="date" id="dateReception" />
+ 
+ <label for="slump">slump :</label>     
+<input type="text" id="slump" name="slump">
+      <button onclick="ajouterChantier()">Ajouter</button>
+    </div>
+
+    <div class="lists">
+      <div>
+        <h2>Liste des affaires</h2>
+        <ul id="listeAffaires"></ul>
+      </div>
+
+      <div>
+        <h2>Liste des chantiers</h2>
+        <ul id="listeChantiers"></ul>
+      </div>
+    </div>
+
+    <h3>Ajouter une éprouvette</h3>
+<form id="eprouvetteForm">
+  <select id="chantierSelect"></select>
+  <select id="ageSelect">
+    <option value="7">7 jours</option>
+    <option value="28">28 jours</option>
+    <option value="90">90 jours</option>
+  </select>
+  <label for="nombreE">nombre :</label>     
+  <input type="text" id="nombreSelect" name="nombreE">
+  <button type="submit">Ajouter</button>
+</form>
+
+
+    <div class="details" id="detailsChantier"></div>
+  </div>
+
+  <h2>Calendrier des dates</h2>
+<div id="calendar"></div>
+
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+</body>
+</html>
